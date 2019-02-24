@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Set up bats
+          command: |
+            git clone https://github.com/sstephenson/bats.git ~/bats
+            cd ~/bats
+            sudo ./install.sh /usr/local
+      - run:
           name: unit tests
           command: |
             cd starts-with-verb
