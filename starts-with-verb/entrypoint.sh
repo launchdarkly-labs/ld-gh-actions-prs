@@ -2,7 +2,6 @@
 
 title=$(jq -r .pull_request.title "$GITHUB_EVENT_PATH")
 
-echo $title
 if [[ -n "$IGNORE_PREFIX_PCRE" ]]; then
     prefix=$(echo "$title" | perl -ne "my \$pat='^(${IGNORE_PREFIX_PCRE})'; print \$_ =~ \$pat")
     echo "Ignoring prefix using PCRE '${IGNORE_PREFIX_PCRE}'"

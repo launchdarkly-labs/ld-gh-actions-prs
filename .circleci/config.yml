@@ -21,7 +21,7 @@ jobs:
           name: integration test
           command: |
             cd starts-with-verb
-            make integration-test
+            make remote-integration-test
 
 workflows:
   version: 2
