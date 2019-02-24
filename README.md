@@ -1,7 +1,6 @@
 # Pull Request Actions
 
-
-# starts-with-verb
+## starts-with-verb
 
 Ensures your pull request starts with a verb.  Uses 2of12 word list as converted to json in https://github.com/felixfischer/categorized-words.  Add this to your `.github/main.workflow` to enable:
 
@@ -19,3 +18,8 @@ action "Title starts with verb" {
   }
 }
 ```
+
+### Development
+
+Install `bats` (`brew install bats` on OSX) and run `make test` to run unit tests.
+Run `make integration-test` to run Docker integration test.

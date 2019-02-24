@@ -2,8 +2,9 @@
 
 title=$(jq -r .pull_request.title "$GITHUB_EVENT_PATH")
 
+echo $title
 if [[ -n "$IGNORE_PREFIX_PCRE" ]]; then
-    prefix=$(echo "$title" | perl -ne "my \$pat='${IGNORE_PREFIX_PCRE}'; print \$_ =~ \$pat")
+    prefix=$(echo "$title" | perl -ne "my \$pat='^(${IGNORE_PREFIX_PCRE})'; print \$_ =~ \$pat")
     echo "Ignoring prefix using PCRE '${IGNORE_PREFIX_PCRE}'"
     if [[ -n "$prefix" ]]; then
         echo "Ignoring prefix '${prefix}'"
@@ -13,7 +14,7 @@ fi
 
 words=( $title )
 
-match="$(jq ".V[]|select(. == \"${words[0],,}\")" /2of12id.json)"
+match="$(jq ".V[]|select(. == \"${words[0],,}\")" 2of12id.json)"
 
 if [[ -z "$match" ]]; then
     echo "FAIL: First word '${words[0]}' is not a recognized verb"
