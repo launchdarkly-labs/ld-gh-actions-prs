@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  starts-with-verb:
+    build: .
+    volumes_from:
+      - store-event
+    environment:
+      GITHUB_EVENT_PATH: /data/event.json
+  store-event:
+    image: alpine
+    command:
+      - sh
+      - "-c"
+      - >
+        echo '{"pull_request": {"title": "starts with a verb"}}' > /data/event.json
+    volumes:
+      - /data
