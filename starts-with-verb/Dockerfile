@@ -4,7 +4,7 @@ RUN apk add --no-cache bash jq curl perl
 
 ADD 2of12id.json /
 
-ENV TWOOF12_JSON=/2of12id.json
+ENV DATA_PATH=/
 
 ADD entrypoint.sh /usr/bin
 
