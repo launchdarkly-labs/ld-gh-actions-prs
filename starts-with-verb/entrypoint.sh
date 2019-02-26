@@ -13,7 +13,7 @@ fi
 
 words=( $title )
 
-match="$(jq ".V[]|select(. == \"${words[0],,}\")" /2of12id.json)"
+match="$(jq ".V[]|select(. == \"${words[0],,}\")" "$TWOOF12_JSON")"
 
 if [[ -z "$match" ]]; then
     echo "FAIL: First word '${words[0]}' is not a recognized verb"

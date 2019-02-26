@@ -1,5 +1,5 @@
 test:
-	ENTRYPOINT=$(CURDIR)/entrypoint.sh bats test.bats
+	TWOOF12_JSON=./2of12id.json ENTRYPOINT=$(CURDIR)/entrypoint.sh bats test.bats
 
 IMAGE_NAME=starts-with-verb
 
