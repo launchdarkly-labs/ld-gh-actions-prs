@@ -5,8 +5,11 @@ services:
     build: .
     volumes_from:
       - store-event
+    volumes:
+      - /github/workspace
     environment:
       GITHUB_EVENT_PATH: /data/event.json
+      GITHUB_WORKSPACE: /github/workspace
   store-event:
     image: alpine
     command:
@@ -16,3 +19,4 @@ services:
         echo '{"pull_request": {"title": "starts with a verb"}}' > /data/event.json
     volumes:
       - /data
+    working_dir: /github/workspace
