@@ -1,9 +1,6 @@
-FROM python:3
+FROM python:3-alpine
 
-RUN apt-get update &&
-    apt-get install -y jq && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache bash jq python-dev build-base
 
 ADD requirements.txt .
 RUN pip install -r requirements.txt
