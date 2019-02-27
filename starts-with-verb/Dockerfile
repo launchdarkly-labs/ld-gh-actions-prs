@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN apk add --no-cache bash jq
+RUN apk add --no-cache bash jq python-dev
 
 ADD requirements.txt .
 RUN pip install -r requirements.txt
