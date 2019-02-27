@@ -1,5 +1,7 @@
 test:
-	DATA_PATH=. ENTRYPOINT=$(CURDIR)/entrypoint.sh bats test.bats
+	python -m spacy download en
+	py.test
+	DATA_PATH=. PATH="$(CURDIR):$(PATH)" ENTRYPOINT=$(CURDIR)/entrypoint.sh bats test.bats
 
 IMAGE_NAME=starts-with-verb
 
