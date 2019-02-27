@@ -1,6 +1,9 @@
-FROM python:3-alpine
+FROM python:3
 
-RUN apk add --no-cache bash jq python-dev
+RUN apt-get update &&
+    apt-get install -y jq && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ADD requirements.txt .
 RUN pip install -r requirements.txt
