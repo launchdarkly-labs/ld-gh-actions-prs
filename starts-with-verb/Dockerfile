@@ -2,6 +2,7 @@ FROM python:3-alpine
 
 RUN apk add --no-cache bash jq
 
+ADD requirements.txt .
 RUN pip install -r requirements.txt
 RUN python -m spacy download en
 
