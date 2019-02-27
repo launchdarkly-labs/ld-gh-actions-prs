@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 test:
 	python -m spacy download en
 	py.test
@@ -20,7 +22,6 @@ DOCKER_COMPOSE=docker-compose -f docker-compose.integration-test.yml
 
 remote-integration-test:
 	$(DOCKER_COMPOSE) up store-event
-	result=$$($(DOCKER_COMPOSE) run starts-with-verb); \
-	[[ $$result = "First word 'starts' is a recognized verb" ]] || echo "Unexpected output: $$result"
+	result=$$($(DOCKER_COMPOSE) run starts-with-verb); && [[ $$result = "First word 'starts' is a recognized verb" ]] || echo "Unexpected output: $$result"
 
 .PHONY: test
