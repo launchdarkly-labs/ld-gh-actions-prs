@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/node
+      - image: circleci/python:3
     steps:
       - checkout
       - setup_remote_docker
@@ -16,6 +16,9 @@ jobs:
           name: unit tests
           command: |
             cd starts-with-verb
+            sudo pip install -r requirements.txt
+            sudo pip install -r dev_requirements.txt
+            sudo python -m spacy download en
             make test
       - run:
           name: integration test
