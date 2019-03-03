@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  sut:
+  sut: # dockerhub expects this service name for automated tests
     build: .
     volumes_from:
       - store-event
@@ -10,13 +10,15 @@ services:
     environment:
       GITHUB_EVENT_PATH: /data/event.json
       GITHUB_WORKSPACE: /github/workspace
+    depends_on:
+      - store-event
   store-event:
     image: alpine
     command:
       - sh
       - "-c"
       - >
-        echo '{"pull_request": {"title": "starts with a verb"}}' > /data/event.json
+        sleep 1; echo '{"pull_request": {"title": "starts with a verb"}}' > /data/event.json
     volumes:
       - /data
     working_dir: /github/workspace
