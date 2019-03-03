@@ -18,7 +18,7 @@ services:
       - sh
       - "-c"
       - >
-        sleep 1; echo '{"pull_request": {"title": "starts with a verb"}}' > /data/event.json
+        sleep 1; echo '{"pull_request": {"title": "start with a verb"}}' > /data/event.json
     volumes:
       - /data
     working_dir: /github/workspace
