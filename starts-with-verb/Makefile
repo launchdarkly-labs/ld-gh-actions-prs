@@ -18,7 +18,7 @@ local-integration-test:
 		      -e GITHUB_EVENT_PATH=/tmp/event.json $(IMAGE_NAME)); \
 	[[ $$result = "First word 'starts' is a recognized verb" ]] || echo "Unexpected output: $$result"
 
-DOCKER_COMPOSE=docker-compose -f docker-compose.integration-test.yml
+DOCKER_COMPOSE=docker-compose -f docker-compose.test.yml
 
 remote-integration-test:
 	$(DOCKER_COMPOSE) build sut
