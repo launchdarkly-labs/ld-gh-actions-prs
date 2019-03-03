@@ -1,5 +1,9 @@
 # Pull Request Actions
 
+[![Docker Automated build](https://img.shields.io/docker/automated/launchdarkly/ld-gh-actions-pr-starts-with-verb.svg)](https://hub.docker.com/r/launchdarkly/ld-gh-actions-pr-starts-with-verb)
+
+[![CircleCI](https://circleci.com/gh/launchdarkly/ld-gh-actions-prs.svg?style=svg)](https://circleci.com/gh/launchdarkly/ld-gh-actions-prs)
+
 ## starts-with-verb
 
 Ensures your pull request starts with a verb.  Uses 2of12 word list as converted to json in https://github.com/felixfischer/categorized-words.  Add this to your `.github/main.workflow` to enable:
