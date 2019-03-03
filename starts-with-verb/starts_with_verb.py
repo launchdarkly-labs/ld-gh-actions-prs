@@ -2,14 +2,16 @@
 import os
 import sys
 import re
+import string
 
 import spacy
 
 # Load English tokenizer, tagger, parser, NER and word vectors
 nlp = spacy.load('en_core_web_sm')
 
+
 def assert_starts_with_verb(sentence):
-    doc = nlp(sentence)
+    doc = nlp(sentence.lower())
 
     assert doc, "No sentence was provided"
 
@@ -18,8 +20,10 @@ def assert_starts_with_verb(sentence):
         print(entity, entity.pos_, entity.tag_)
 
     first_word = next(iter(doc))
-    assert first_word.pos_ == 'VERB' and first_word.tag_ in ('VB', 'VBP'), "Verb does not start with a present tense verb: {}".format(first_word)
+    assert first_word.pos_ == 'VERB' and first_word.tag_ in ('VB', 'VBP'), (
+        "Verb does not start with a present tense verb: {}".format(first_word))
     print("Sentence starts with '{}' which is a present tense verb".format(first_word))
+
 
 def main():
     sentence = " ".join(sys.argv[1:])
@@ -34,6 +38,7 @@ def main():
             sentence = sentence[match.end():]
 
     assert_starts_with_verb(sentence)
+
 
 if __name__ == "__main__":
     main()
