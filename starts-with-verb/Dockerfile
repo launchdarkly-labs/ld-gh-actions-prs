@@ -13,8 +13,7 @@ FROM python:3-alpine
 
 RUN apk add --no-cache bash jq libstdc++
 
-RUN rm -rf /usr/local/lib/python3.7/site-packages/*
-COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages/
+COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 
 ADD starts_with_verb.py /usr/local/bin
 
