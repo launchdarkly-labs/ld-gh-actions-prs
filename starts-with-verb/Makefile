@@ -21,6 +21,6 @@ local-integration-test:
 DOCKER_COMPOSE=docker-compose -f docker-compose.integration-test.yml
 
 remote-integration-test:
-	result=$$($(DOCKER_COMPOSE) run sut) && [[ $$result = "First word 'starts' is a recognized verb" ]] || echo "Unexpected output: $$result"
+	result=$$($(DOCKER_COMPOSE) --verbose run sut) && [[ $$result = "First word 'starts' is a recognized verb" ]] || echo "Unexpected output: $$result"
 
 .PHONY: test
