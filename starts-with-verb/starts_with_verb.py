@@ -34,7 +34,7 @@ def main():
         print("Ignoring prefix using PCRE '{}'".format(prefix_pcre))
         match = re.match(prefix_pcre, sentence)
         if match:
-            print("Ignoring prefix '${}'".format(match.group(0)))
+            print("Ignoring prefix '{}'".format(match.group(0)))
             sentence = sentence[match.end():]
 
     assert_starts_with_verb(sentence)
